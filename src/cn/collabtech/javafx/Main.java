@@ -1,9 +1,18 @@
 package cn.collabtech.javafx;
 
+import java.net.URL;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import cn.collabtech.javafx.common.AppConstants;
+import cn.collabtech.javafx.controller.LoginController;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,28 +24,44 @@ public class Main extends Application {
 	private static Stage primaryStage;
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage stage) throws Exception {
 		if (logger.isInfoEnabled()) {
 			logger.info("start(Stage) - start");
 		}
+		URL url = Thread.currentThread().getContextClassLoader().getResource("resource/fxml/login.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(url);
+		Parent root = fxmlLoader.load();
+		// create scene
+		Scene scene = new Scene(root, 1000, 600);
+		//设置窗口title
+		stage.setTitle(AppConstants.PRIMARYSTAGE_TITLE);
 		
-		this.primaryStage = primaryStage;
+		//禁用窗口缩放
+		//stage.setResizable(false);
+		
+		// 设置窗口的图标.
+		stage.getIcons().add(new Image(AppConstants.APP_LOGO_PATH));
+		
+		stage.setScene(scene);
+		// show stage
+		stage.show();
 
-		System.out.println("xxxxxxxxxxxxxxxxx");
+		this.primaryStage = stage;
 		
+		LoginController loginController = fxmlLoader.getController();
+		loginController.setPrimaryStage(stage);
+
 		if (logger.isInfoEnabled()) {
 			logger.info("start(Stage) - end");
 		}
-		int i = 1 / 0;
 	}
 
 	public static void main(String[] args) {
 
 		PropertyConfigurator.configure(
-				Thread.currentThread().getContextClassLoader().getResource("resource/config/log4j.properties"));
+				Thread.currentThread().getContextClassLoader().getResource(AppConstants.LOG4J_PATH));
 		// PropertyConfigurator.configure(
 		// Thread.currentThread().getContextClassLoader().getResource("cn/collabtech/javafx/resource/config/log4j.properties"));
-
 		// 运行主程序入口
 
 		try {
@@ -45,7 +70,7 @@ public class Main extends Application {
 			launch(args);
 			logger.info("start(String[]) - end");
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error(e + ">>>" + e.getCause());
 		}
 
 	}
