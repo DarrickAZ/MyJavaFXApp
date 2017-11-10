@@ -87,8 +87,8 @@ public class LoginController extends BaseController {
 
 	public void loginApp(ActionEvent event) {
 		try {
-			int i = 0 / 1;
-			int i1 = 1 / 0;
+			//int i = 0 / 1;
+			//int i1 = 1 / 0;
 			String name = userName.getText();
 			String pwd = passWord.getText();
 			if (logger.isInfoEnabled()) {
