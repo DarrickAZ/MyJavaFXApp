@@ -7,12 +7,17 @@ import org.apache.log4j.PropertyConfigurator;
 
 import cn.collabtech.javafx.common.AppConstants;
 import cn.collabtech.javafx.controller.LoginController;
+import cn.collabtech.javafx.util.AlertUtil;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 	/**
@@ -30,6 +35,9 @@ public class Main extends Application {
 		URL url = Thread.currentThread().getContextClassLoader().getResource("resource/fxml/login.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(url);
 		Parent root = fxmlLoader.load();
+		
+		LoginController loginController = fxmlLoader.getController();
+		
 		// create scene
 		Scene scene = new Scene(root, AppConstants.PRIMARY_STAGE_WIDTH,AppConstants.PRIMARY_STAGE_HEIGTH);
 		// 设置窗口title
@@ -41,14 +49,25 @@ public class Main extends Application {
 		// 设置窗口的图标.
 		stage.getIcons().add(new Image(AppConstants.APP_LOGO_PATH));
 
+		//默认选中勾选记住密码 
+		loginController.getRemberPwd().setSelected(true);
+		
 		stage.setScene(scene);
 		// show stage
 		stage.show();
 
 		this.primaryStage = stage;
 
-		LoginController loginController = fxmlLoader.getController();
 		loginController.setPrimaryStage(stage);
+		
+		//监听窗口关闭事件
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				event.consume();
+				AlertUtil.showPlatformCloseConfirmAlert("是否关闭当前程序。", stage);
+			}
+		});
 
 		if (logger.isInfoEnabled()) {
 			logger.info("start(Stage) - end");

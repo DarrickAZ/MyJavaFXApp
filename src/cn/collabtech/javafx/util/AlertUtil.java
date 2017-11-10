@@ -3,6 +3,7 @@ package cn.collabtech.javafx.util;
 import java.util.Optional;
 
 import cn.collabtech.javafx.common.AppConstants;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -60,7 +61,7 @@ public class AlertUtil {
 	 * 
 	 * @param message
 	 */
-	public static boolean showConfirmAlert(String message,Stage stage) {
+	public static boolean showConfirmAlert(String message, Stage stage) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setContentText(message);
 		Optional<ButtonType> optional = alert.showAndWait();
@@ -70,4 +71,26 @@ public class AlertUtil {
 			return false;
 		}
 	}
+
+	/**
+	 * 系统窗口关闭确认框
+	 * 
+	 * @param message
+	 */
+	public static boolean showPlatformCloseConfirmAlert(String message, Stage stage) {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle(AppConstants.CLOSE_PLATFORM_CONFIRM_MSG);
+		alert.initOwner(stage);
+		alert.setContentText(message);
+		Optional<ButtonType> optional = alert.showAndWait();
+		if (ButtonType.OK == optional.get()) {
+			// 如果用户点击确定则直接退出当前程序。
+			Platform.exit();
+			return true;
+		} else {
+			stage.show();
+			return false;
+		}
+	}
+
 }

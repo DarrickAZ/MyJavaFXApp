@@ -15,6 +15,8 @@ public class AppConstants {
 	public static String APP_LOGO_PATH = "resource/img/timgb.png";
 	
 	public static final String INDEX_FXML = "resource/fxml/index.fxml";
+
+	public static final String CLOSE_PLATFORM_CONFIRM_MSG = "关闭程序";
 	
 
 }

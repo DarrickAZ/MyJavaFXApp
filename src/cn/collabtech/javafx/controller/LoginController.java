@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -39,6 +40,9 @@ public class LoginController extends BaseController {
 
 	@FXML
 	private Button loginButton;
+
+	@FXML
+	private CheckBox remberPwd;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -87,8 +91,8 @@ public class LoginController extends BaseController {
 
 	public void loginApp(ActionEvent event) {
 		try {
-			//int i = 0 / 1;
-			//int i1 = 1 / 0;
+			// int i = 0 / 1;
+			// int i1 = 1 / 0;
 			String name = userName.getText();
 			String pwd = passWord.getText();
 			if (logger.isInfoEnabled()) {
@@ -162,6 +166,30 @@ public class LoginController extends BaseController {
 
 	public void setLoginButton(Button loginButton) {
 		this.loginButton = loginButton;
+	}
+
+	public TextField getUserName() {
+		return userName;
+	}
+
+	public void setUserName(TextField userName) {
+		this.userName = userName;
+	}
+
+	public TextField getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(TextField passWord) {
+		this.passWord = passWord;
+	}
+
+	public CheckBox getRemberPwd() {
+		return remberPwd;
+	}
+
+	public void setRemberPwd(CheckBox remberPwd) {
+		this.remberPwd = remberPwd;
 	}
 
 }
