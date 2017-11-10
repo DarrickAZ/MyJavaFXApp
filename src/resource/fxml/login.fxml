@@ -13,7 +13,6 @@
 	     -fx-background-image: url("../img/background.jpg");
 	}
  -->
-
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="loginBgImg" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.collabtech.javafx.controller.LoginController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="269.0" />
@@ -37,29 +36,20 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="用户名" wrappingWidth="78.0">
+            <Text  strokeType="OUTSIDE" strokeWidth="0.0" text="用户名" wrappingWidth="78.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="213.0" GridPane.columnIndex="1" />
+            <TextField fx:id="userName" prefHeight="40.0" prefWidth="213.0" GridPane.columnIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="密    码" wrappingWidth="65.30029296875" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="取消" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-            		<styleClass>
-   						<String fx:value="btn-cancel" />
-   					</styleClass>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="登录" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <PasswordField  fx:id="passWord" prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="记住密码" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginApp" prefHeight="40.0" prefWidth="80.0" text="登录" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="30.0" />
                </GridPane.margin>
@@ -74,8 +64,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <CheckBox mnemonicParsing="false" text="记住密码" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-            <PasswordField prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonApp" prefHeight="40.0" prefWidth="80.0" text="取消" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            		<styleClass>
+   						<String fx:value="btn-cancel" />
+   					</styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </GridPane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />

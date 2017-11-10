@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -32,22 +31,22 @@ public class Main extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(url);
 		Parent root = fxmlLoader.load();
 		// create scene
-		Scene scene = new Scene(root, 1000, 600);
-		//设置窗口title
+		Scene scene = new Scene(root, AppConstants.PRIMARY_STAGE_WIDTH,AppConstants.PRIMARY_STAGE_HEIGTH);
+		// 设置窗口title
 		stage.setTitle(AppConstants.PRIMARYSTAGE_TITLE);
-		
-		//禁用窗口缩放
-		//stage.setResizable(false);
-		
+
+		// 禁用窗口缩放
+		// stage.setResizable(false);
+
 		// 设置窗口的图标.
 		stage.getIcons().add(new Image(AppConstants.APP_LOGO_PATH));
-		
+
 		stage.setScene(scene);
 		// show stage
 		stage.show();
 
 		this.primaryStage = stage;
-		
+
 		LoginController loginController = fxmlLoader.getController();
 		loginController.setPrimaryStage(stage);
 
@@ -58,8 +57,8 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 
-		PropertyConfigurator.configure(
-				Thread.currentThread().getContextClassLoader().getResource(AppConstants.LOG4J_PATH));
+		PropertyConfigurator
+				.configure(Thread.currentThread().getContextClassLoader().getResource(AppConstants.LOG4J_PATH));
 		// PropertyConfigurator.configure(
 		// Thread.currentThread().getContextClassLoader().getResource("cn/collabtech/javafx/resource/config/log4j.properties"));
 		// 运行主程序入口
