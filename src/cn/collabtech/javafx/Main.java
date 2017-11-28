@@ -9,16 +9,22 @@ import cn.collabtech.javafx.common.AppConstants;
 import cn.collabtech.javafx.controller.LoginController;
 import cn.collabtech.javafx.util.AlertUtil;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * @Package cn.collabtech.javafx
+ * @Class Main.java
+ * @Author Darrick
+ * @Date 2017年11月28日 下午4:42:40 
+ * @Description
+ * @Versions 1.0
+ */
 public class Main extends Application {
 	/**
 	 * Logger for this class

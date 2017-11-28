@@ -7,11 +7,17 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-
+/**
+ * @Package cn.collabtech.javafx.util
+ * @Class AlertUtil.java
+ * @Author Darrick
+ * @Date 2017年11月28日 下午4:42:19 
+ * @Description
+ * @Versions 1.0
+ */
 public class AlertUtil {
 	/**
 	 * 信息提示框
-	 * 
 	 * @param message
 	 */
 	public static void showInfoAlert(String message, Stage stage) {
@@ -25,7 +31,6 @@ public class AlertUtil {
 
 	/**
 	 * 等待信息提示框
-	 * 
 	 * @param message
 	 */
 	public static void showAndWaitInfoAlert(String message, Stage stage) {
@@ -47,7 +52,6 @@ public class AlertUtil {
 
 	/**
 	 * 异常提示框
-	 * 
 	 * @param message
 	 */
 	public static void showErrorAlert(String message, Stage stage) {
@@ -58,7 +62,6 @@ public class AlertUtil {
 
 	/**
 	 * 确定提示框
-	 * 
 	 * @param message
 	 */
 	public static boolean showConfirmAlert(String message, Stage stage) {
@@ -74,7 +77,6 @@ public class AlertUtil {
 
 	/**
 	 * 系统窗口关闭确认框
-	 * 
 	 * @param message
 	 */
 	public static boolean showPlatformCloseConfirmAlert(String message, Stage stage) {
